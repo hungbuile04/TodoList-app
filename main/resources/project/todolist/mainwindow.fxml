@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.control.ToggleButton?>
+<BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.todolist.HelloController">
+   <left>
+      <ListView fx:id="todoListView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" onKeyPressed="#handleKeyPressed"/>
+   </left>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+          <TextArea fx:id="itemDetailsTextArea" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"
+          wrapText="true"/>
+          <HBox prefHeight="100.0" prefWidth="200.0">
+               <Label style="-fx-background-color: white" text="Due:">
+                   <font>
+                       <Font name="Times New Roman bold" size="20" />
+                   </font>
+               </Label>
+               <Label fx:id="deadlineLabel">
+                   <font>
+                       <Font name="Times New Roman bold" size="20" />
+                   </font>
+               </Label>
+          </HBox>
+      </VBox>
+   </center>
+   <top>
+       <VBox>
+      <MenuBar BorderPane.alignment="CENTER">
+          <Menu text="File">
+              <MenuItem text="New" onAction="#showNewItemDialog"/>
+              <SeparatorMenuItem/>
+              <MenuItem text="Exit" onAction="#handleExit"/>
+          </Menu>
+      </MenuBar>
+           <ToolBar>
+               <HBox>
+                   <Button text = "New" onAction="#showNewItemDialog">
+                       <tooltip>
+                           <Tooltip text="Add new TodoItem"/>
+                       </tooltip>
+                   </Button>
+                   <ToggleButton fx:id="filterToggleButton" text = "Today's Item" onAction="#handleFilterButton">
+                       <tooltip>
+                           <Tooltip text="Button down: show today's only. Button up: show all"/>
+                       </tooltip>
+                   </ToggleButton>
+               </HBox>
+           </ToolBar>
+       </VBox>
+   </top>
+</BorderPane>
